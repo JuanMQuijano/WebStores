@@ -25,8 +25,13 @@ const usuarioSchema = Schema(
       trim: true,
     },
     admin: {
-      type: Number,
-      default: 0,
+      type: Boolean,
+      default: false,
+    },
+    empresa: {
+      type: Schema.Types.ObjectId,
+      ref: "Empresa",
+      default: null,
     },
   },
   //Definimos los timestamps, para agregar las columnas de cuando fue creado y cuando fue actualizado

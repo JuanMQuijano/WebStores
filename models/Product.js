@@ -20,9 +20,6 @@ const productSchema = Schema(
     img: {
       type: [String],
     },
-    url: {
-      type: String,
-    },
     categoria: {
       type: Schema.Types.ObjectId,
       ref: "Categoria",
@@ -32,6 +29,11 @@ const productSchema = Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: [true, "El id del usuario es requerido"],
+    },
+    empresa: {
+      type: Schema.Types.ObjectId,
+      ref: "Empresa",
+      default: null,
     },
   },
   {

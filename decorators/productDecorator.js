@@ -1,0 +1,37 @@
+import { Product } from "../models/Product.js";
+
+function productDecorator() {
+  return {
+    async addProduct(data) {
+      const product = new Product(data);
+
+      await product.save();
+    },
+
+    async getProducts() {
+      const products = await Product.find();
+
+      return products;
+    },
+
+    async deleteProduct(id) {
+      const producto = await Product.findById(id);
+      await producto.deleteOne();
+    },
+
+    async getProduct(id) {
+      const product = await Product.findById(id);
+      return product;
+    },
+
+    async getProductByName(nameParams) {
+      const productos = await Product.find({
+        name: { $regex: new RegExp(nameParams, "i") },
+      });
+
+      return productos;
+    },
+  };
+}
+
+export default productDecorator;
