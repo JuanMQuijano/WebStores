@@ -23,7 +23,6 @@ const productSchema = Schema(
     categoria: {
       type: Schema.Types.ObjectId,
       ref: "Categoria",
-      required: [true, "La categoria es requerida"],
     },
     user: {
       type: Schema.Types.ObjectId,

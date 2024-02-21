@@ -8,8 +8,8 @@ function productDecorator() {
       await product.save();
     },
 
-    async getProducts() {
-      const products = await Product.find();
+    async getProducts(empresa) {
+      const products = await Product.find({ empresa });
 
       return products;
     },

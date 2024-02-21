@@ -41,9 +41,10 @@ router.post("/add", [validarJWT], async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/:empresa", async (req, res) => {
   try {
-    const productos = await decoratorProduct.getProducts();
+    const { empresa } = req.params;    
+    const productos = await decoratorProduct.getProducts(empresa);
 
     res.status(200).json(productos);
   } catch (error) {
