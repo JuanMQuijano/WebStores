@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+.banner {
+  position: relative;
+  background-position: center center;
+}
+
+.banner-cont {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.opt-1 {
+  background-image: url("./public/opt1.png");
+}
+
+.opt-2 {
+  background-image: url("./public/opt2.webp");  
+}
