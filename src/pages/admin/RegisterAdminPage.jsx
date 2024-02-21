@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Alerta from '../../components/Alerta';
 import { clienteAxio } from '../../axios/clienteAxios';
+import EMPRESA_ID from '../../constant/EMPRESA_ID';
 
 const RegisterAdminPage = () => {
 
@@ -56,7 +57,7 @@ const RegisterAdminPage = () => {
     }
 
     try {
-      await clienteAxio.post('/users', { name: 'Admin', admin: 1, email, password, tel: 0 })
+      await clienteAxio.post('/users', { name: 'Admin', admin: true, email, password, tel: 0, empresa: EMPRESA_ID })
 
       setData({
         email: '',

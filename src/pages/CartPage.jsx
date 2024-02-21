@@ -64,6 +64,14 @@ const CartPage = () => {
                     <tbody>
                         {cart.map(p => (<ProductTableRow key={p.uid} product={p}></ProductTableRow>))}
                     </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <p>Total Pagar: <span className='font-bold'>${cart.reduce((t, c) => t += c.price * c.cantidad, 0)}</span></p>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
 
                 <div className='flex justify-end gap-5'>

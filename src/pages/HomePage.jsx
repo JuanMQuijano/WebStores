@@ -22,7 +22,9 @@ const HomePage = () => {
 
           <Banner />
 
-          <Products products={products} />
+          <div className='mt-5'>
+            <Products products={products} />
+          </div>
 
         </>)}
 

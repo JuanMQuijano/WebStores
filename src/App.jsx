@@ -29,6 +29,7 @@ function App() {
         <Route path="/admin/pedidos" element={<PedidosPage />}></Route>
       </Route>
 
+      <Route path="/*" element={<HomePage />}></Route>
     </Routes>
   )
 }

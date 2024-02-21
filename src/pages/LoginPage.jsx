@@ -42,7 +42,7 @@ const LoginPage = () => {
 
       localStorage.setItem("token-licorlab", token)
 
-      dispatch(onAuth({ name: usuario.name, admin: usuario.admin, uid: usuario.uid }))
+      dispatch(onAuth({ name: usuario.name, admin: usuario.admin, uid: usuario.uid, empresa: usuario.empresa }))
 
       setData({
         email: '',
@@ -52,6 +52,7 @@ const LoginPage = () => {
       admin ? navigate('/admin') : navigate('/');
 
     } catch (error) {
+
       if (error?.response?.data.ok === false) {
         setAlerta({ ok: error?.response?.data.ok, msg: error?.response?.data.msg })
 

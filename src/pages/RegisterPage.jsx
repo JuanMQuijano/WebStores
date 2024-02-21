@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Alerta from '../components/Alerta';
 import { clienteAxio } from '../axios/clienteAxios';
+import EMPRESA_ID from '../constant/EMPRESA_ID';
 
 const RegisterPage = () => {
 

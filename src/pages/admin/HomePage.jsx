@@ -5,16 +5,17 @@ import { getProducts } from '../../../store/thunks/products';
 import Spinner from '../../components/Spinner';
 import { useNavigate } from 'react-router-dom';
 import CrearProductoForm from '../../components/CrearProductoForm';
+import EMPRESA_ID from '../../constant/EMPRESA_ID';
 
 const HomePage = () => {
 
     const navigate = useNavigate();
     const { user } = useSelector(selector => selector.auth)
-    const { admin } = user;
+    const { admin, empresa } = user;
 
     //Bloque el acceso a las rutas de admin
     useEffect(() => {
-        if (admin === 0 || admin === null) {
+        if (admin === false || admin === null || empresa !== EMPRESA_ID) {
             navigate("/")
             return;
         }

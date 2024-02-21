@@ -4,17 +4,18 @@ import { clienteAxio } from "../axios/clienteAxios";
 import { getProducts } from "../../store/thunks/products";
 import { addToCart } from "../../store/cart/cartSlice";
 import { setProduct } from "../../store/products/productsSlice";
+import EMPRESA_ID from "../constant/EMPRESA_ID";
 
 const Card = ({ product }) => {
 
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.auth);
-    const { admin } = user;
+    const { admin, empresa } = user;
 
-    const { uid, name, des, price, img } = product;
+    const { uid, name, description, price, img } = product;
 
     const handleClick = () => {
-        dispatch(addToCart({ uid, name, des, price, img, cantidad: 1 }))
+        dispatch(addToCart({ uid, name, description, price, img, cantidad: 1 }))
 
         Swal.fire('¡Genial!', 'Producto Agregado al Carrito', 'success')
 
@@ -64,12 +65,11 @@ const Card = ({ product }) => {
         <div >
             <img src={`${import.meta.env.VITE_BACKEND_URL}/products/image/${img[0]}`} alt={`Imagen de ${name}`} />
             <h1 className="font-bold text-2xl capitalize">{name}</h1>
-            <p>{uid}</p>
-            <p className="text-xl text-gray-500 capitalize">{des}</p>
+            <p className="text-xl text-gray-500 capitalize">{description}</p>
             <p className="font-bold mt-5 text-2xl">${new Intl.NumberFormat('es-CO').format(price)}</p>
 
             {
-                admin === 1 ? (
+                admin === true && empresa === EMPRESA_ID ? (
                     <div className="flex justify-between items-center">
                         <button className="bg-indigo-500 p-3 border-md hover:bg-indigo-600 rounded text-white" onClick={() => handleClickUpdate(product)}>Editar</button>
                         <button className="bg-red-500 p-3 border-md hover:bg-red-600 rounded text-white" onClick={() => handleClickEliminar(uid)}>Eliminar</button>

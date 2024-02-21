@@ -1,11 +1,14 @@
 import { clienteAxio } from "../../src/axios/clienteAxios";
+import EMPRESA_ID from "../../src/constant/EMPRESA_ID";
 import { setLoading, setProduct, setProducts } from "../products/productsSlice";
 
 export const getProducts = () => {
   return async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await clienteAxio.get("/products");
+      const { data } = await clienteAxio.get(
+        `/products/${EMPRESA_ID}`
+      );
 
       dispatch(setProducts(data));
       dispatch(setLoading(false));

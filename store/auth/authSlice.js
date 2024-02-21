@@ -8,6 +8,7 @@ export const authSlice = createSlice({
       uid: "",
       name: "",
       admin: null,
+      empresa: "",
     },
   },
   reducers: {
@@ -19,6 +20,7 @@ export const authSlice = createSlice({
         uid: "",
         name: "",
         admin: null,
+        empresa: "",
       };
     },
     setLoading: (state, { payload }) => {
