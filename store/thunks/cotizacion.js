@@ -1,13 +1,13 @@
 import { clienteAxio } from "../../src/axios/clienteAxios";
-import { setCompras, setLoading } from "../compras/comprasSlide";
+import { setCotizaciones, setLoading } from "../cotizaciones/cotizacionesSlice";
 
-export const getCompras = () => {
+export const getCotizaciones = () => {
   return async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await clienteAxio.get("/compras");
+      const { data } = await clienteAxio.get("/cotizacion");
 
-      dispatch(setCompras(data));
+      dispatch(setCotizaciones(data));
       dispatch(setLoading(false));
     } catch (error) {
       console.log(error);

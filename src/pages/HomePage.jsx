@@ -1,44 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../store/thunks/products';
+import Spinner from '../components/Spinner';
+import Card from '../components/Card';
+import CardHome from '../components/CardHome';
 
 const HomePage = () => {
+
+    const { loading, products } = useSelector(state => state.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
+
     return (
         <>
+            {loading ? (<Spinner />) : (
+                <>
+                    <div className='w-5/6 mx-auto mt-8' id="somos">
+                        <h2 className='p-3 bg-blue-950 text-white font-bold text-2xl'>¿Quienes Somos?</h2>
 
-            <div className='bg-red-500 w-5/6 mx-auto mt-8'>
-                <h2 className=''>¿Quienes Somos?</h2>
-            </div>
-
-            <div className='w-5/6 mx-auto mt-8'>
-                <h2 className='p-3 bg-blue-950 text-white font-bold text-2xl'>Nuestros Servicios</h2>
-
-                <div className='banner opt-1 rounded-md'>
-                    <div className='flex items-center p-16 justify-between my-10 banner-cont text-white h-96 rounded-md'>
-                        <h3 className='uppercase text-2xl font-bold'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </h3>
-
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quisquam dolore. Repellat distinctio dignissimos, deserunt id, quo veniam voluptatem, natus odit quasi asperiores quisquam vero eos fugiat numquam illum nisi?</p>
-
-                            <button className='bg-blue-500 hover:bg-blue-600 p-3 rounded-md font-bold'>Obtener Información</button>
-                        </div>
+                        <p className='mt-5'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, tempora quos aspernatur, deleniti iure maiores ipsam voluptatibus, accusamus libero et impedit asperiores tempore expedita iusto id nobis minus eligendi. Molestiae.
+                            Dolores sint accusantium adipisci provident, minus quod facere quo veritatis blanditiis necessitatibus optio itaque labore porro, qui eaque modi dignissimos! Atque repudiandae obcaecati suscipit, numquam laudantium sunt. Facere, in modi.
+                            Dolor totam officiis accusantium perferendis, pariatur veniam! Facere ab, sint quam quas expedita minima inventore repudiandae dolores tempora iure atque accusamus autem dolore delectus neque debitis, ipsam sequi ratione soluta.</p>
                     </div>
-                </div>
 
-                <div className='banner opt-2 rounded-md'>
-                    <div className='flex items-center p-16 justify-between my-10 banner-cont text-white h-96 rounded-md flex-row-reverse'>
-                        <h3 className='uppercase text-2xl font-bold'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        </h3>
+                    <div className='w-5/6 mx-auto mt-8'>
+                        <h2 className='p-3 bg-blue-950 text-white font-bold text-2xl'>Nuestros Servicios</h2>
 
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quisquam dolore. Repellat distinctio dignissimos, deserunt id, quo veniam voluptatem, natus odit quasi asperiores quisquam vero eos fugiat numquam illum nisi?</p>
-
-                            <button className='bg-blue-500 hover:bg-blue-600 p-3 rounded-md font-bold'>Obtener Información</button>
-                        </div>
+                        {products.map((p, i) => <CardHome key={p.uid} product={p} pos={i} />)}
                     </div>
-                </div>
-            </div>
+                </>)}
 
 
         </>

@@ -5,6 +5,7 @@ import ServicePage from "./pages/ServicePage"
 import LoginPage from "./pages/admin/LoginPage"
 import RegisterPage from "./pages/admin/RegisterPage"
 import AdminHome from "./pages/admin/HomePage";
+import CotizacionPage from "./pages/admin/CotizacionPage"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admin/" index element={<AdminHome />}></Route>
         <Route path="/admin/login" element={<LoginPage />}></Route>
         <Route path="/admin/register" element={<RegisterPage />}></Route>
+        <Route path="/admin/cotizaciones" element={<CotizacionPage />}></Route>
       </Route>
 
     </Routes>

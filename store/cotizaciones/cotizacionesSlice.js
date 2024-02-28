@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const comprasSlice = createSlice({
-  name: "compras",
+export const cotizacionesSlice = createSlice({
+  name: "cotizaciones",
   initialState: {
     loading: null,
-    compras: [],
+    cotizaciones: [],
   },
   reducers: {
-    setCompras: (state, { payload }) => {
-      state.compras = payload;
+    setCotizaciones: (state, { payload }) => {
+      state.cotizaciones = payload;
     },
     setLoading: (state, { payload }) => {
       state.loading = payload;
@@ -17,4 +17,4 @@ export const comprasSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setLoading, setCompras } = comprasSlice.actions;
+export const { setLoading, setCotizaciones } = cotizacionesSlice.actions;

@@ -38,6 +38,24 @@ export const getProduct = (id) => {
   };
 };
 
+export const getProductToView = (id) => {
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+
+    try {
+      const { data } = await clienteAxio.get(`/products/view/${id}`);      
+
+      dispatch(setProduct(data));
+
+      setTimeout(() => {
+        dispatch(setLoading(false));
+      }, 500);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const searchProducts = (name) => {
   return async (dispatch) => {
     dispatch(setLoading(true));
