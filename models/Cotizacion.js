@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const cotizacionSchema = Schema({
-  nombre: {
+  name: {
     type: String,
     required: true,
     trim: true,

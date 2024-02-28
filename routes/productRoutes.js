@@ -43,7 +43,7 @@ router.post("/add", [validarJWT], async (req, res) => {
 
 router.get("/:empresa", async (req, res) => {
   try {
-    const { empresa } = req.params;    
+    const { empresa } = req.params;
     const productos = await decoratorProduct.getProducts(empresa);
 
     res.status(200).json(productos);
@@ -68,6 +68,16 @@ router.delete("/delete/:id", [validarJWT], async (req, res) => {
 });
 
 router.get("/:id", [validarJWT], async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await decoratorProduct.getProduct(id);
+    res.status(200).json(product);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/view/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const product = await decoratorProduct.getProduct(id);

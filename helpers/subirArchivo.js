@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 
 export const subirArchivo = (
   files,
-  extensionesValidas = ["png", "jpg", "jpeg", "gif"],
+  extensionesValidas = ["png", "jpg", "jpeg", "gif", "webp"],
   carpeta = ""
 ) => {
   return new Promise((resolve, reject) => {

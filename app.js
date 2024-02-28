@@ -7,6 +7,7 @@ import { router as usersRouter } from "./routes/userRoutes.js";
 import { router as productsRouter } from "./routes/productRoutes.js";
 import { router as compraRouter } from "./routes/compraRoutes.js";
 import { router as categoriaRouter } from "./routes/categoriaRoute.js";
+import { router as cotizacionRouter } from "./routes/cotizacionRoute.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/compras", compraRouter);
 app.use("/api/categorias", categoriaRouter);
+app.use("/api/cotizacion", cotizacionRouter);
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
