@@ -39,6 +39,7 @@ const Header = () => {
                     <>
                         <Link to="/login" className="text-xl">Iniciar Sesión</Link>
                         <Link to="/register" className="text-xl">Crear Cuenta</Link>
+                        <Link to="/admin/create/account" className="text-xl">Crear Cuenta Admin</Link>                        
                     </>) : user.admin === true && user.empresa === EMPRESA_ID ? (<>
                         <Link to="/admin" className="text-xl">Gestionar Productos</Link>
                         <Link to="/admin/categorias" className="text-xl">Gestionar Categorias</Link>

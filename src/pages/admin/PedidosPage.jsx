@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import PedidoCard from '../../components/PedidoCard';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getCompras } from '../../../store/thunks/compras';
 import Spinner from '../../components/Spinner';
-import { useNavigate } from 'react-router-dom';
-import CrearProductoForm from '../../components/CrearProductoForm';
+import PedidoCard from '../../components/PedidoCard';
 
 const PedidosPage = () => {
 
