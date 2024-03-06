@@ -24,6 +24,7 @@ const Header = () => {
       <nav className='flex gap-5'>
         <a href="#somos" className='font-bold text-lg'>¿Quien Somos?</a>
         <a href="" className='font-bold text-lg'>Servicios</a>
+        <Link to="/admin/register" className="text-xl font-bold">Crear Cuenta Admin</Link>
 
         {(user.admin === true && user.empresa === EMPRESA_ID) ? (
           <>
