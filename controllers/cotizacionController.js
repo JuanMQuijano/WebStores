@@ -3,9 +3,9 @@ import Cotizacion from "../models/Cotizacion.js";
 
 export const createCotizacion = async (req = request, res = response) => {
 
-    const { name, tel, products } = req.body;
+    const { name, tel, products, weigth, from, to, price } = req.body;
 
-    const cotizacion = new Cotizacion({ name, tel, products })
+    const cotizacion = new Cotizacion({ name, tel, products, weigth, from, to, price })
 
     try {
         await cotizacion.save();

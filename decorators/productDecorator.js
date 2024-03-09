@@ -27,6 +27,7 @@ function productDecorator() {
     async getProductByName(nameParams) {
       const productos = await Product.find({
         name: { $regex: new RegExp(nameParams, "i") },
+        empresa: '65cbc7f243b5378739250155'
       });
 
       return productos;

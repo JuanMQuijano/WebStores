@@ -15,6 +15,20 @@ const cotizacionSchema = Schema({
     type: [Schema.Types.ObjectId],
     ref: "Product",
   },
+  weigth: {
+    type: String,
+    trim: true
+  },
+  from: {
+    type: String,
+    trim: true
+  }, to: {
+    type: String,
+    trim: true
+  }, price: {
+    type: String,
+    trim: true
+  },
   status: {
     type: Boolean,
     default: false,
