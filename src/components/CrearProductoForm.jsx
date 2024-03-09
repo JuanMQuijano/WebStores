@@ -147,13 +147,11 @@ const CrearProductoForm = () => {
     const { ok, msg } = alerta;
 
     return (
-        // <div className='w-9/12 mx-auto mt-5'>
-        //     <div className='w-2/6 mx-auto'>
         <div>
             <div>
-                <h1 className='text-4xl text-center capitalize'>{!editando ? 'Agregar un nuevo Producto a la tienda' : 'Edición de Producto'}</h1>
+                <h1 className='text-2xl lg:text-4xl text-center capitalize'>{!editando ? 'Agregar un nuevo Producto a la tienda' : 'Edición de Producto'}</h1>
 
-                <form onSubmit={handleSubmit} className='mt-10 p-5 border border-gray-400 rounded-md'>
+                <form onSubmit={handleSubmit} className='mt-10 p-3 lg:p-5 border border-gray-400 rounded-md'>
 
                     {msg.length > 0 && (<Alerta ok={ok} msg={msg} />)}
 

@@ -40,23 +40,23 @@ const CartPage = () => {
     return (
 
         cart.length > 0 ? (
-            <div className='w-9/12 mx-auto mt-5'>
-                <table className='w-full'>
-                    <thead>
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg my-16 w-9/12 mx-auto">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th>
+                            <th scope="col" className="px-16 py-3">
+                                <span className="sr-only">Imagen</span>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
                                 Producto
                             </th>
-                            <th>
-                                Nombre
-                            </th>
-                            <th>
+                            <th scope="col" className="px-6 py-3">
                                 Precio
                             </th>
-                            <th>
+                            <th scope="col" className="px-6 py-3">
                                 Cantidad
                             </th>
-                            <th>
+                            <th scope="col" className="px-6 py-3">
                                 Acciones
                             </th>
                         </tr>
@@ -82,8 +82,8 @@ const CartPage = () => {
                     </Link>)}
                 </div>
             </div>) : (
-            <div className='w-9/12 mx-auto mt-5 flex items-center justify-center'>
-                <h1 className='bg-cyan-500 text-white text-4xl p-3 rounded-md font-bold capitalize text-center'>No hay productos en el carrito</h1>
+            <div className='w-9/12 mx-auto my-80 flex items-center justify-center'>
+                <h1 className='bg-cyan-500 text-white text-2xl lg:text-4xl p-3 rounded-md font-bold capitalize text-center'>No hay productos en el carrito</h1>
             </div>)
 
     )

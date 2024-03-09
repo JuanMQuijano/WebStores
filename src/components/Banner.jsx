@@ -6,7 +6,7 @@ const Banner = () => {
                     🍻<span className="text-orange-400">Licor</span>-Lab 🧪
                 </h1>
                 <p className="banner__content-text">
-                    El sabor de la tradición, horneado con pasión.
+                    Disfruta una buena bebida, al mejor precio.
                 </p>
             </div>
         </div>

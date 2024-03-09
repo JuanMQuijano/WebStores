@@ -20,7 +20,12 @@ const SearchPage = () => {
 
     return (
 
-        loading ? (<Spinner />) : (<Products products={products} />)
+        loading ? (<Spinner />) : (
+            <div className='flex flex-col w-11/12 mx-auto mt-16 mb-36'>
+                <h1 className='text-2xl lg:text-4xl'>Resultados</h1>
+                <hr className='bg-black h-1'/>
+                <Products products={products} />
+            </div>)
 
     )
 }

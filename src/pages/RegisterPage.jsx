@@ -94,11 +94,11 @@ const RegisterPage = () => {
   const { ok, msg } = alerta;
 
   return (
-    <div className='w-9/12 mx-auto mt-5'>
-      <div className='w-2/6 mx-auto'>
+    <div className='lg:w-9/12 mx-auto my-5 '>
+      <div className='w-2/6 mx-auto my-32 lg:my-28'>
 
-        <h1 className='text-4xl text-center capitalize'>Crea tu cuenta en LICOR-LAB</h1>
-        <p className='text-center text-2xl font-bold'>Y compra bebidas al mejor precio</p>
+        <h1 className='text-2xl lg:text-4xl text-center capitalize'>Crea tu cuenta en LICOR-LAB</h1>
+        <p className='text-center text-2xl lg:text-4xl font-bold'>Y compra bebidas al mejor precio</p>
 
         <form onSubmit={handleSubmit} className='mt-10 p-5 border border-gray-400 rounded-md'>
 
@@ -131,9 +131,11 @@ const RegisterPage = () => {
           </div>
 
           <div className='flex justify-between items-center mt-7'>
-            <button type="submit" className='p-2 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600'>Crear Cuenta</button>
-            <Link to="/login" className='text-gray-400 hover:text-gray-500 hover:underline'>¿Ya tienes cuenta? Inicia Sesión</Link>
+            <button type="submit" className='p-1 lg:p-2 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600'>Crear Cuenta</button>
+            <Link to="/login" className='text-gray-400 hover:text-gray-500 hover:underline text-sm lg:text-lg'>¿Ya tienes cuenta? Inicia Sesión</Link>
           </div>
+
+
         </form>
 
       </div>

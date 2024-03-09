@@ -31,7 +31,7 @@ const CategoriasPage = () => {
             {loading ? (<Spinner />) : (
 
                 <>
-                    <div className='flex gap-28 mt-5 p-3'>
+                    <div className='flex gap-14 lg:gap-28 mt-5 p-3'>
 
                         <CrearCategoriaForm />
 
