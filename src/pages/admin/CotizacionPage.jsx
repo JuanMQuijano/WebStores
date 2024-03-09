@@ -30,8 +30,13 @@ const CotizacionPage = () => {
 
     return (
         loading ? (<Spinner />) : (
-            <div className='grid grid-cols-5 gap-5 mt-5'>
-                {cotizaciones.map(c => (<CotizacionCard key={c._id} pedido={c} />))}
+            <div className='flex flex-col w-11/12 mx-auto mt-16 mb-36'>
+                <h1 className='text-2xl lg:text-4xl'>Cotizaciones</h1>
+                <hr className='bg-black h-1' />
+
+                <div className='grid grid-cols-3 lg:grid-cols-5 gap-5 mt-5 w-11/12 mx-auto'>
+                    {cotizaciones.map(c => (<CotizacionCard key={c._id} pedido={c} />))}
+                </div>
             </div>
         )
     )

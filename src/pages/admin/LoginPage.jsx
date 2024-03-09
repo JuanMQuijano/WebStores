@@ -70,14 +70,13 @@ const LoginPage = () => {
     const { ok, msg } = alerta;
 
     return (
-        <div className='w-9/12 mx-auto mt-5'>
-            <div className='w-2/6 mx-auto'>
+        <div className='lg:w-9/12 mx-auto my-5 '>
+            <div className='w-2/6 mx-auto my-32 lg:my-28'>
 
-                <h1 className='text-4xl text-center capitalize'>Inicia Sesión en Mueve-LO</h1>
-                <p className='text-center text-2xl font-bold'>Y administra las cotizaciones y servicios</p>
+                <h1 className='text-2xl lg:text-4xl text-center capitalize'>Inicia Sesión en Mueve-LO</h1>
+                <p className='text-center text-2xl lg:text-4xl font-bold'>Y administra las cotizaciones y servicios</p>
 
                 <form className='mt-10 p-5 border border-gray-400 rounded-md' onSubmit={handleSubmit}>
-
                     {msg.length > 0 && (<Alerta ok={ok} msg={msg} />)}
 
                     <div className="flex flex-col my-5">
@@ -91,11 +90,11 @@ const LoginPage = () => {
                     </div>
 
 
-
                     <div className='flex justify-between items-center mt-7'>
-                        <button type="submit" className='p-2 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600'>Iniciar Sesión</button>
-                        <Link to="/admin/register" className='text-gray-400 hover:text-gray-500 hover:underline'>¿Aún no tienes cuenta? Crea una</Link>
+                        <button type="submit" className='p-1 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600 font-bold'>Iniciar Sesión</button>
+                        <Link to="/admin/register" className='text-gray-400 hover:text-gray-500 hover:underline text-sm lg:text-lg'>¿Aún no tienes cuenta? Crea una</Link>
                     </div>
+
                 </form>
 
             </div>

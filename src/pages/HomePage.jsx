@@ -4,6 +4,7 @@ import { getProducts } from '../../store/thunks/products';
 import Spinner from '../components/Spinner';
 import Card from '../components/Card';
 import CardHome from '../components/CardHome';
+import Banner from '../components/Banner';
 
 const HomePage = () => {
 
@@ -18,6 +19,8 @@ const HomePage = () => {
         <>
             {loading ? (<Spinner />) : (
                 <>
+                    <Banner />
+
                     <div className='w-5/6 mx-auto mt-8' id="somos">
                         <h2 className='p-3 bg-blue-950 text-white font-bold text-2xl'>¿Quienes Somos?</h2>
 
@@ -26,7 +29,7 @@ const HomePage = () => {
                             Dolor totam officiis accusantium perferendis, pariatur veniam! Facere ab, sint quam quas expedita minima inventore repudiandae dolores tempora iure atque accusamus autem dolore delectus neque debitis, ipsam sequi ratione soluta.</p>
                     </div>
 
-                    <div className='w-5/6 mx-auto mt-8'>
+                    <div className='w-5/6 mx-auto mt-8' id="servicios">
                         <h2 className='p-3 bg-blue-950 text-white font-bold text-2xl'>Nuestros Servicios</h2>
 
                         {products.map((p, i) => <CardHome key={p.uid} product={p} pos={i} />)}

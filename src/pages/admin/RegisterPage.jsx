@@ -22,41 +22,41 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const { email, password, password_confirm } = data;
-        
+
         if ([email, password, password_confirm].some(e => e === "")) {
             setAlerta({ ok: false, msg: 'Todos los campos son obligatorios' })
-            
+
             setTimeout(() => {
                 setAlerta({ ok: null, msg: '' })
             }, 3000)
-            
+
             return
         }
-        
+
         if (password.length < 6) {
             setAlerta({ ok: false, msg: 'El password debe ser de 6 o más caracteres' })
-            
+
             setTimeout(() => {
                 setAlerta({ ok: null, msg: '' })
             }, 3000)
-            
+
             return
         }
-        
-        
+
+
         if (password != password_confirm) {
             setAlerta({ ok: false, msg: 'Los password no coinciden' })
-            
+
             setTimeout(() => {
                 setAlerta({ ok: null, msg: '' })
             }, 3000)
-            
+
             return
         }
-        
-        try {            
+
+        try {
             await clienteAxio.post('/users', { name: 'Admin', admin: true, email, password, tel: 0, empresa: EMPRESA_ID })
 
             setData({
@@ -91,11 +91,11 @@ const RegisterPage = () => {
     const { ok, msg } = alerta;
 
     return (
-        <div className='w-9/12 mx-auto mt-5'>
-            <div className='w-2/6 mx-auto'>
+        <div className='lg:w-9/12 mx-auto my-5 '>
+            <div className='w-2/6 mx-auto my-32 lg:my-28'>
 
-                <h1 className='text-4xl text-center capitalize'>Crea tu cuenta en Mueve-LO</h1>
-                <p className='text-center text-2xl font-bold'>Y administra las cotizaciones y servicios</p>
+                <h1 className='text-2xl lg:text-4xl text-center capitalize'>Crea tu cuenta en Mueve-LO</h1>
+                <p className='text-center text-2xl lg:text-4xl font-bold'>Y administra las cotizaciones y servicios</p>
 
                 <form onSubmit={handleSubmit} className='mt-10 p-5 border border-gray-400 rounded-md'>
 
@@ -118,8 +118,8 @@ const RegisterPage = () => {
                     </div>
 
                     <div className='flex justify-between items-center mt-7'>
-                        <button type="submit" className='p-2 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600'>Crear Cuenta</button>
-                        <Link to="/admin/login" className='text-gray-400 hover:text-gray-500 hover:underline'>¿Ya tienes cuenta? Inicia Sesión</Link>
+                        <button type="submit" className='p-1 lg:p-2 bg-indigo-500 text-white rounded-md hover:cursor-pointer hover:bg-indigo-600'>Crear Cuenta</button>
+                        <Link to="/admin/login" className='text-gray-400 hover:text-gray-500 hover:underline text-sm lg:text-lg'>¿Ya tienes cuenta? Inicia Sesión</Link>
                     </div>
                 </form>
 
