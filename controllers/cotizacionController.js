@@ -1,6 +1,7 @@
 import { request, response } from "express";
 import Cotizacion from "../models/Cotizacion.js";
 import { enviarEmail } from "../helpers/enviarEmail.js";
+import { Product } from "../models/Product.js";
 
 export const createCotizacion = async (req = request, res = response) => {
 
@@ -11,7 +12,9 @@ export const createCotizacion = async (req = request, res = response) => {
     try {
         await cotizacion.save();
 
-        await enviarEmail({ name, products, weigth, email, from, to, price });
+        const product = await Product.findById(products[0]);
+
+        await enviarEmail({ name, servicio: product.name, weigth, email, from, to, price });
 
         return res.status(200).json({ ok: true, msg: "Información Registrada, Revisa tu Email" })
     } catch (error) {
