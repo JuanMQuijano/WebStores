@@ -7,11 +7,9 @@ const Footer = () => {
       <div className='w-full lg:w-8/12 grid grid-cols-3 p-7 mt-24 text-white mx-auto '>
 
         <div className='mx-auto border-white border-r p-5 pr-24 lg:pr-52'>
-          <h3 className='text-xl lg:text-2xl uppercase mb-5'>Puntos de Venta</h3>
+          <h3 className='text-xl lg:text-2xl uppercase mb-5'>Puntos de Servicio</h3>
 
           <p>Popayán - Dirección 1</p>
-          <p>Popayán - Dirección 2</p>
-          <p>Popayán - Dirección 3</p>
 
         </div>
 

@@ -11,7 +11,7 @@ const ServicePage = () => {
     const params = useParams();
     const { id } = params;
 
-    const [data, setData] = useState({ serviceId: id, name: "", tel: "", weigth: "", from: "", to: "", price: 1 })
+    const [data, setData] = useState({ serviceId: id, name: "", tel: "", email: "", weigth: "", from: "", to: "", price: 1 })
     const [alerta, setAlerta] = useState({ ok: null, msg: "" })
 
     const { product } = useSelector(state => state.products)
@@ -67,7 +67,7 @@ const ServicePage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if ([name, tel].includes("")) {
+        if ([name, tel, email, weigth, from, to].includes("")) {
             setAlerta({ ok: false, msg: "Todos los campos son necesarios" })
 
             setTimeout(() => {
@@ -78,11 +78,11 @@ const ServicePage = () => {
 
         try {
 
-            const { data } = await clienteAxio.post('/cotizacion', { products: [id], name, tel, weigth, to, from, price });
+            const { data } = await clienteAxio.post('/cotizacion', { products: [id], name, tel, email, weigth, to, from, price });
 
             setAlerta({ ok: data.ok, msg: data.msg })
 
-            setData({ serviceId: id, name: "", tel: "" })
+            setData({ serviceId: id, name: "", tel: "", email: "", price: 1, weigth: "", from: "", to: "" })
 
             setTimeout(() => {
                 setAlerta({ ok: null, msg: "" })
@@ -99,7 +99,7 @@ const ServicePage = () => {
         }
     }
 
-    const { name, tel, weigth, from, to, price } = data;
+    const { name, tel, weigth, from, to, price, email } = data;
     const { ok, msg } = alerta;
 
     return (
@@ -118,6 +118,12 @@ const ServicePage = () => {
                         <label htmlFor="name" className='uppercase font-bold '>Nombre</label>
                         <input type="text" placeholder='Ingresa tu Nombre' id='name' name='name' className='p-1 border border-gray-500 rounded-md' onChange={handleChange} value={name} />
                     </div>
+
+                    <div className='flex flex-col mt-5'>
+                        <label htmlFor="email" className='uppercase font-bold '>Email</label>
+                        <input type="email" placeholder='Ingresa tu Email' id='email' name='email' className='p-1 border border-gray-500 rounded-md' onChange={handleChange} value={email} />
+                    </div>
+
                     <div className='flex flex-col mt-5'>
                         <label htmlFor="tel" className='uppercase font-bold '>Teléfono</label>
                         <input type="number" placeholder='Ingresa tu Número de Contacto' id='tel' name='tel' className='p-1 border border-gray-500 rounded-md' onChange={handleChange} value={tel} />
@@ -134,7 +140,7 @@ const ServicePage = () => {
                     </div>
 
                     <div className='flex flex-col mt-5'>
-                        <label htmlFor="from" className='uppercase font-bold '>Desde</label>
+                        <label htmlFor="from" className='uppercase font-bold '>Origen</label>
                         <select name="from" id="from" value={from} onChange={handleChange}>
                             <option value="">-- Seleccione --</option>
                             <option value="Popayán">Popayán</option>
@@ -143,7 +149,7 @@ const ServicePage = () => {
                     </div>
 
                     <div className='flex flex-col mt-5'>
-                        <label htmlFor="to" className='uppercase font-bold '>Hacia</label>
+                        <label htmlFor="to" className='uppercase font-bold '>Destino</label>
                         <select name="to" id="to" value={to} onChange={handleChange}>
                             <option value="">-- Seleccione --</option>
                             <option value="Medellín">Medellín</option>
@@ -151,7 +157,7 @@ const ServicePage = () => {
                         </select>
                     </div>
 
-                    <div className='uppercase font-bold mt-5'>Precio: {price === 1 ? "$0" : `$${price}`}</div>
+                    <div className='uppercase font-bold mt-5 text-2xl'>Precio: {price === 1 ? "$0" : `$${price}`}</div>
 
                     <button type="submit" className='mt-5 p-2 bg-indigo-500 hover:bg-indigo-600 uppercase text-white rounded font-bold' >Enviar</button>
 
