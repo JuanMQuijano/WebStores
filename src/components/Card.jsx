@@ -12,7 +12,7 @@ const Card = ({ product }) => {
     const { user } = useSelector(state => state.auth);
     const { admin, empresa } = user;
 
-    const { uid, name, description, price, img } = product;
+    const { uid, name, description, price, img, stock_min, stock } = product;
 
     const handleClick = () => {
         dispatch(addToCart({ uid, name, description, price, img, cantidad: 1 }))
@@ -62,21 +62,33 @@ const Card = ({ product }) => {
     }
 
     return (
-        <div >
-            <img src={`${import.meta.env.VITE_BACKEND_URL}/products/image/${img[0]}`} alt={`Imagen de ${name}`} />
-            <h1 className="font-bold text-xl lg:text-2xl capitalize">{name}</h1>
-            <p className="text-xl text-gray-500 capitalize">{description}</p>
-            <p className="font-bold mt-5 text-xl lg:text-2xl">${new Intl.NumberFormat('es-CO').format(price)}</p>
 
-            {
-                admin === true && empresa === EMPRESA_ID ? (
-                    <div className="flex justify-between items-center">
-                        <button className="bg-indigo-500 p-3 border-md hover:bg-indigo-600 rounded text-white" onClick={() => handleClickUpdate(product)}>Editar</button>
-                        <button className="bg-red-500 p-3 border-md hover:bg-red-600 rounded text-white" onClick={() => handleClickEliminar(uid)}>Eliminar</button>
-                    </div>
-                ) : (<button type="button" onClick={handleClick} className="mt-3 uppercase bg-indigo-600 text-white w-9/12 p-2 rounded font-bold text-center hover:bg-indigo-700 text-md">Agregar al Carrito</button>)
-            }
-        </div>
+        parseInt(stock) == 0 && (admin != true && empresa !== EMPRESA_ID) ? (<></>) :
+            (
+                <div className={`${(parseInt(stock) <= parseInt(stock_min) && (admin === true && empresa === EMPRESA_ID)) ? 'bg-amber-400' : ''
+                    } p-3 rounded`}>
+                    <img src={`${import.meta.env.VITE_BACKEND_URL}/products/image/${img[0]}`} alt={`Imagen de ${name} `} />
+                    <h1 className="font-bold text-xl lg:text-2xl capitalize">{name}</h1>
+                    <p className="text-xl text-gray-500 capitalize">{description}</p>
+                    <p className="font-bold mt-5 text-xl lg:text-2xl">${new Intl.NumberFormat('es-CO').format(price)}</p>
+
+                    {
+                        admin === true && empresa === EMPRESA_ID ? (
+                            <>
+                                <div className="flex justify-between items-center">
+                                    <button className="bg-indigo-500 p-3 border-md hover:bg-indigo-600 rounded text-white" onClick={() => handleClickUpdate(product)}>Editar</button>
+                                    <button className="bg-red-500 p-3 border-md hover:bg-red-600 rounded text-white" onClick={() => handleClickEliminar(uid)}>Eliminar</button>
+                                </div>
+                                {
+                                    parseInt(stock) == 0 && (
+                                        <p className="my-2 text-center capitalize bg-red-500 p-1 rounded font-bold">No hay stock de este producto</p>
+                                    )
+                                }
+                            </>
+                        ) : (<button type="button" onClick={handleClick} className="mt-3 uppercase bg-indigo-600 text-white w-9/12 p-2 rounded font-bold text-center hover:bg-indigo-700 text-md">Agregar al Carrito</button>)
+                    }
+                </div>
+            )
     )
 }
 

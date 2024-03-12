@@ -29,7 +29,9 @@ const CrearProductoForm = () => {
         name: '',
         description: '',
         price: '',
-        categoria: ''
+        categoria: '',
+        stock_min: "",
+        stock: ""
     });
 
     const [id, setId] = useState(null);
@@ -46,7 +48,9 @@ const CrearProductoForm = () => {
                 name: product.name,
                 description: product.description,
                 price: product.price,
-                categoria: product.categoria
+                categoria: product.categoria,
+                stock_min: product.stock_min,
+                stock: product.stock
             })
             setImg(product.img)
             setId(product.uid)
@@ -75,7 +79,7 @@ const CrearProductoForm = () => {
             return
         }
 
-        const { name, description, price, categoria } = data;
+        const { name, description, price, categoria, stock_min, stock } = data;
 
         const formData = new FormData();
         formData.append("name", name)
@@ -85,6 +89,8 @@ const CrearProductoForm = () => {
         }
         formData.append("price", price)
         formData.append("categoria", categoria)
+        formData.append("stock_min", stock_min)
+        formData.append("stock", stock)
 
 
         try {
@@ -116,7 +122,9 @@ const CrearProductoForm = () => {
                 name: '',
                 description: '',
                 price: '',
-                categoria: ''
+                categoria: '',
+                stock_min: '',
+                stock: ''
             })
             setImg(null)
             setId(null)
@@ -143,7 +151,7 @@ const CrearProductoForm = () => {
         navigate(-1)
     }
 
-    const { name, description, price, categoria } = data;
+    const { name, description, price, categoria, stock_min, stock } = data;
     const { ok, msg } = alerta;
 
     return (
@@ -169,6 +177,16 @@ const CrearProductoForm = () => {
                     <div className="flex flex-col my-5">
                         <label htmlFor="price" className='font-bold'>Precio</label>
                         <input type="text" name="price" id="price" value={price} onChange={handleChange} placeholder='Ingresa el Precio del Producto' className='p-1 rounded border border-gray-500' />
+                    </div>
+
+                    <div className="flex flex-col my-5">
+                        <label htmlFor="stock_min" className='font-bold'>Inventario Minimo</label>
+                        <input type="text" name="stock_min" id="stock_min" value={stock_min} onChange={handleChange} placeholder='Ingresa la cantidad mínima del Producto' className='p-1 rounded border border-gray-500' />
+                    </div>
+
+                    <div className="flex flex-col my-5">
+                        <label htmlFor="stock" className='font-bold'>Cantidad</label>
+                        <input type="text" name="stock" id="stock" value={stock} onChange={handleChange} placeholder='Ingresa el total del stock' className='p-1 rounded border border-gray-500' />
                     </div>
 
                     <div className='flex flex-col mt-5'>

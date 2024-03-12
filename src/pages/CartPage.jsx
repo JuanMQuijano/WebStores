@@ -20,9 +20,15 @@ const CartPage = () => {
 
         try {
 
-            const productsID = cart.map(p => p.uid);
+            const productsInfo = cart.map(p => {
+                return {
+                    ...p,
+                    id: p.uid,
+                    cantidad: p.cantidad
+                }
+            });
 
-            await clienteAxio.post("/compras", { customer: user.uid, products: productsID })
+            await clienteAxio.post("/compras", { customer: user.uid, products: productsInfo })
 
             Swal.fire({
                 title: 'Compra Registrada',
