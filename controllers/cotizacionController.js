@@ -14,7 +14,7 @@ export const createCotizacion = async (req = request, res = response) => {
 
         const product = await Product.findById(products[0]);
 
-        await enviarEmail({ name, servicio: product.name, weigth, email, from, to, price });
+        await enviarEmail({ name, products: product.name, weigth, email, from, to, price });
 
         return res.status(200).json({ ok: true, msg: "Información Registrada, Revisa tu Email" })
     } catch (error) {
