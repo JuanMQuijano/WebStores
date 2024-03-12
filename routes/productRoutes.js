@@ -17,7 +17,7 @@ router.post("/add", [validarJWT], async (req, res) => {
     return res.status(400).json({ msg: "No hay Imagen que subir" });
   }
 
-  const { name, description, price, categoria } = req.body;
+  const { name, description, price, categoria, stock_min, stock } = req.body;
   const { _id: user, empresa } = req.user;
 
   try {
@@ -30,6 +30,8 @@ router.post("/add", [validarJWT], async (req, res) => {
       img: arrNombres,
       user,
       categoria,
+      stock_min,
+      stock,
       empresa,
     };
 

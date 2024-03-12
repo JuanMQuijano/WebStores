@@ -1,16 +1,19 @@
 import { request, response } from "express";
 import Cotizacion from "../models/Cotizacion.js";
+import { enviarEmail } from "../helpers/enviarEmail.js";
 
 export const createCotizacion = async (req = request, res = response) => {
 
-    const { name, tel, products, weigth, from, to, price } = req.body;
+    const { name, tel, products, weigth, email, from, to, price } = req.body;
 
-    const cotizacion = new Cotizacion({ name, tel, products, weigth, from, to, price })
+    const cotizacion = new Cotizacion({ name, tel, products, weigth, email, from, to, price })
 
     try {
         await cotizacion.save();
 
-        return res.status(200).json({ ok: true, msg: "Información Registrada" })
+        await enviarEmail({ name, products, weigth, email, from, to, price });
+
+        return res.status(200).json({ ok: true, msg: "Información Registrada, Revisa tu Email" })
     } catch (error) {
         console.log(error);
         return res.status(400).json({ ok: false, msg: "Algo salió mal" })

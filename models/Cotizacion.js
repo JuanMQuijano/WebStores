@@ -11,6 +11,11 @@ const cotizacionSchema = Schema({
     required: true,
     trim: true,
   },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   products: {
     type: [Schema.Types.ObjectId],
     ref: "Product",

@@ -24,6 +24,12 @@ const productSchema = Schema(
       type: Schema.Types.ObjectId,
       ref: "Categoria",
     },
+    stock_min: {
+      type: String
+    },
+    stock: {
+      type: String
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",

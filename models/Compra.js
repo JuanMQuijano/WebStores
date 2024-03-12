@@ -6,8 +6,7 @@ const compraSchema = Schema({
     ref: "User",
   },
   products: {
-    type: [Schema.Types.ObjectId],
-    ref: "Product",
+    type: Array,    
   },
   status: {
     type: Boolean,
