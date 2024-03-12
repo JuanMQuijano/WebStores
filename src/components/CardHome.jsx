@@ -9,14 +9,14 @@ const CardHome = ({ product, pos }) => {
 
     return (
         <div className="rounded-md" style={{ backgroundImage: `url(${path})` }}>
-            <div className={`flex items-center p-16 justify-between my-10 banner-cont text-white h-96 rounded-md ${(pos % 2 != 0) ? '' : 'flex-row-reverse'}`}>
-                <h3 className='uppercase text-2xl font-bold'>
+            <div className={`flex flex-col p-16 my-10 banner-cont text-white h-96 rounded-md`}>
+                <h3 className='uppercase text-2xl font-bold my-14'>
                     {name}
                 </h3>
 
                 <div className="flex flex-col gap-5">
                     <div>
-                        <p className="">{description}</p>
+                        <p>{description}</p>
                     </div>
 
                     <div>
